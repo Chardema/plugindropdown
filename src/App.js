@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+
 import './App.css';
+import ChrisDropdown from "./lib/components/ChrisDropdown";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [department, setDepartment] = useState("Sales");
+
+    const departments =[
+        { value: 'Sales', label: 'Sales' },
+        { value: 'Marketing', label: 'Marketing' },
+        { value: 'Engineering', label: 'Engineering' },
+        { value: 'Human Resources', label: 'Human Resources' },
+        { value: 'Legal', label: 'Legal' },
+    ]
+
+    const handleSelect = (selectVal)=>{
+        setDepartment(selectVal)
+    }
+    return (
+        <div className="App">
+            <h1>Coucou</h1>
+            <ChrisDropdown
+                handleSelect={handleSelect}
+                name="department"
+                id="department"
+                options={departments}
+            />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <p>Valeur sélectionnée depuis le composant enfant Dropdown <br/> affichée dans le composant parent App</p>
+            <h3> {department} </h3>
+        </div>
+    );
 }
 
 export default App;
